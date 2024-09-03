@@ -1,3 +1,5 @@
+## Steps :
+
 `docker build -t my-caddy-image .`
 
 `docker compose up --build`
