@@ -1,0 +1,18 @@
+version: '3.8'
+
+services:
+  caddy:
+    image: my-caddy-image
+    ports:
+      - "8080:8080"
+    volumes:
+      - ./Caddyfile:/etc/caddy/Caddyfile
+    depends_on:
+      - backend
+
+  backend:
+    image: nginx:alpine
+    ports:
+      - "8081:80"
+    volumes:
+      - ./backend:/usr/share/nginx/html

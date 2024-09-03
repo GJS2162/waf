@@ -1,0 +1,13 @@
+{
+    order coraza_waf first
+}
+
+:8080 {
+    coraza_waf {
+        directives `
+            SecAction "id:1,pass,log"
+            SecRule REQUEST_URI "/blockme" "id:2, deny, log, phase:1"
+        `
+    }
+    reverse_proxy backend:80
+}
